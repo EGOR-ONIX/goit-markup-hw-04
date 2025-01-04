@@ -17,21 +17,24 @@
   --dark-bg-cl: #2e2f42;
   --light-bg-cl: #f4f4fd;
   --card-bg-cl: #ffffff;
+  --accent-icon-bg-cl: #31d0aa;
 
   /* BORDER COLORS */
   --border-cl: #e7e9fc;
+  --border-icon-cl: #8e8f99;
+
+  /* BOX SHADOW */
+  --box-shadow: 0px 2px 1px rgba(46, 47, 66, 0.08),
+    0px 1px 1px rgba(46, 47, 66, 0.16), 0px 1px 6px rgba(46, 47, 66, 0.08);
+
+  /* ICONS */
+  --fill-socials-icon: #f4f4fd;
+  --fill-features-icon: #2e2f42;
+  --fill-customer-icon: #8e8f99;
 
   /* CARD SET */
   --indent: 24px;
   --item: 1;
-
-  /* Icons */
-  --fill-icon: #f4f4fd;
-  --bg-icon: #4d5ae5;
-  --bg-active-icon: #404bbf;
-  --fill-customer-icon: #8e8f99;
-  --bg-active-footer-icon: #31d0aa;
-  --fill-features-icon: #2e2f42;
 }
 
 /**
@@ -185,6 +188,41 @@ button {
   width: calc((100% - var(--indent) * (var(--item) - 1)) / var(--item));
 }
 
+/* SOCIALS = TEAM SECTION AND FOOTER */
+
+.socials {
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.social-item {
+  width: 40px;
+  height: 40px;
+}
+
+.social-link {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+
+  color: var(--fill-socials-icon);
+
+  background-color: var(--brand-cl);
+  border-radius: 50%;
+}
+
+.social-link:hover,
+.social-link:focus {
+  background-color: var(--accent-cl);
+}
+
+.social-icon {
+  fill: currentColor;
+}
+
 /**
   |============================
   | HEADER STYLES
@@ -193,8 +231,7 @@ button {
 
 .header {
   border-bottom: 1px solid var(--border-cl);
-  box-shadow: 0px 2px 1px rgba(46, 47, 66, 0.08),
-    0px 1px 1px rgba(46, 47, 66, 0.16), 0px 1px 6px rgba(46, 47, 66, 0.08);
+  box-shadow: var(--box-shadow);
 }
 
 .header-container {
@@ -257,8 +294,9 @@ button {
 /* HERO SECTION */
 
 .hero-section {
-  max-width: 1440px; /*! ??*/
-  margin: 0 auto; /*! ??*/
+  max-width: 1440px;
+  margin-right: auto;
+  margin-left: auto;
   padding-top: 188px;
   padding-bottom: 188px;
 
@@ -313,29 +351,30 @@ button {
 }
 
 .feature-item {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
   max-width: 264px;
 }
 
-/*! ============================= */
-.feature-icon {
+.feature-icon-bg {
   display: flex;
   justify-content: center;
   align-items: center;
+  width: 100%;
   height: 112px;
   margin-bottom: 8px;
 
-  background-color: var(--fill-icon);
+  color: var(--fill-features-icon);
+
+  background-color: var(--light-bg-cl);
   border-radius: 4px;
 }
 
 .feature-icon {
-  fill: var(--fill-features-icon);
+  fill: currentColor;
 }
 
 .feature-subtitle {
+  margin-bottom: 8px;
+
   font-weight: 500;
   font-size: 20px;
   line-height: 1.2;
@@ -360,8 +399,7 @@ button {
 
 .team-item {
   background-color: var(--card-bg-cl);
-  box-shadow: 0 2px 1px 0 rgba(46, 47, 66, 0.08),
-    0 1px 1px 0 rgba(46, 47, 66, 0.16), 0 1px 6px 0 rgba(46, 47, 66, 0.08);
+  box-shadow: var(--box-shadow);
   border-radius: 0px 0px 4px 4px;
 }
 
@@ -380,77 +418,42 @@ button {
   color: var(--additional-dark-txt-cl);
 }
 
-/*! ==============================  */
 .team-position {
   margin-bottom: 8px;
 }
 
-.team-socials-list {
-  display: flex;
-  justify-content: center;
-  gap: 24px;
-}
-
-.team-socials-item {
-  width: 40px;
-  height: 40px;
-}
-
-.team-link {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  height: 100%;
-  background-color: var(--bg-icon);
-  border-radius: 50%;
-}
-
-.team-link:hover,
-.team-link:focus {
-  background-color: var(--bg-active-icon);
-}
-
-.team-link-icon {
-  fill: var(--fill-icon);
-}
-
-/*! CUSTOMERS SECTION */
-
-.customers-title {
-  line-height: 1.1;
-}
+/* CUSTOMERS SECTION */
 
 .customers-list {
-  display: flex;
-  gap: var(--indent);
+  --item: 6;
 }
 
-.customers-item {
-  width: calc((100% - 120px) / 6);
+.customer-item {
   height: 88px;
 }
 
-.customers-link {
-  width: 100%;
-  height: 100%;
-
+.customer-link {
   display: flex;
   justify-content: center;
   align-items: center;
-  border: 1px solid var(--fill-customer-icon);
-  border-radius: 4px;
+  width: 100%;
+  height: 100%;
+
   color: var(--fill-customer-icon);
+
+  border: 1px solid var(--border-icon-cl);
+  border-radius: 4px;
 }
 
-.customers-icon {
+.customer-icon {
   fill: currentColor;
 }
 
-.customers-link:hover,
-.customers-link:focus {
-  border-color: var(--bg-active-icon);
-  color: var(--bg-active-icon);
+.customer-link:hover,
+.customer-link:focus {
+  color: var(--accent-cl);
+
+  border-color: var(--accent-cl);
 }
 
 /* PORTFOLIO SECTION - PORTFOLIO PAGE */
@@ -481,8 +484,8 @@ button {
 .filter-btn:focus {
   color: var(--primary-light-txt-cl);
 
-  box-shadow: 0px 3px 1px rgba(0, 0, 0, 0.1), 0px 2px 1px rgba(0, 0, 0, 0.08),
-    0px 2px 2px rgba(0, 0, 0, 0.12);
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.12), 0 2px 1px 0 rgba(0, 0, 0, 0.08),
+    0 3px 1px 0 rgba(0, 0, 0, 0.1);
   border-color: transparent;
 }
 
@@ -497,8 +500,7 @@ button {
 
 .portfolio-item:hover,
 .portfolio-item:focus {
-  box-shadow: 0 2px 1px 0 rgba(46, 47, 66, 0.08),
-    0 1px 1px 0 rgba(46, 47, 66, 0.16), 0 1px 6px 0 rgba(46, 47, 66, 0.08);
+  box-shadow: var(--box-shadow);
 }
 
 .portfolio-wrapper {
@@ -514,9 +516,7 @@ button {
   color: var(--additional-dark-txt-cl);
 }
 
-.portfolio-category {
-  color: var(--primary-dark-txt-cl);
-}
+/*! .portfolio-category {} */
 
 /**
   |============================
@@ -550,38 +550,20 @@ button {
   color: var(--additional-light-txt-cl);
 }
 
-.footer-social-txt {
+/*! .footer-socials-wrapper {} */
+
+.footer-socials-subtitle {
+  margin-bottom: 16px;
+
   font-weight: 500;
   color: var(--primary-light-txt-cl);
-  margin-bottom: 16px;
 }
 
-.footer-social-list {
-  display: flex;
-  justify-content: center;
+.footer-socials {
   gap: 16px;
 }
 
-.footer-social-item {
-  width: 40px;
-  height: 40px;
-}
-
-.footer-social-link {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  height: 100%;
-  background-color: var(--bg-icon);
-  border-radius: 50%;
-}
-
-.footer-social-link:hover,
-.footer-social-link:focus {
-  background-color: var(--bg-active-footer-icon);
-}
-
-.footer-social-icon {
-  fill: var(--fill-icon);
+.footer-socials .social-link:hover,
+.footer-socials .social-link:focus {
+  background-color: var(--accent-icon-bg-cl);
 }
